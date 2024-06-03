@@ -182,3 +182,25 @@ Delete a Tag locally
 
 `git push origin --delete tag_name`  
 Delete a Tag remotely
+
+
+## EDIT (AMEND) OLD COMMITS
+
+`git rebase --interactive [hash]`  
+This opens a a "todo" file where you can decide what to do for every commit that comes after the given hash.  
+By default every commit is set to "pick", which means the commit will not be touched.  
+Set to "edit" every line you want to modify.  
+Save the file and close it.  
+
+A rebasing branch will be checked out at the point of the selected hash.  
+You can then do something to the commit at which the rebasing branch has been stopped, for example:
+`git commit --amend --author="[author_username] <[author_email]>" --no-edit`  
+(this modifies the author username and email of the commit).  
+(you can do many other types of modifications of course).
+
+Then you can proceed with  
+`git rebase --continue`
+This will make the rebasing branch proceed to the next commit.  
+
+Repeat this process until you reach the head of the branch you are rebasing.  
+At this point the rebasing branch will disappear and the edits you made will be applied to the repository tree.
