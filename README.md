@@ -204,3 +204,33 @@ This will make the rebasing branch proceed to the next commit.
 
 Repeat this process until you reach the head of the branch you are rebasing.  
 At this point the rebasing branch will disappear and the edits you made will be applied to the repository tree.
+
+
+## SUBMODULES
+
+`git submodule add [url] [path]`
+Adds the repo from the specified url as a submodule to your local repo (in the optionally specified path)
+
+`git submodule init`
+- Initializes (locally) the file '.git/.gitmodules' (Git needs this to manage submodules).
+
+`git submodule update`
+- Updates all the submodules to the latest commit (it's not a pull from the submodule remote!).
+
+### Example: clone a repository with all its submodules
+```
+git clone url/of/my_project
+cd my_project
+git submodule init
+git submodule update
+```
+
+### Example: pull latest remote changes for a submodule
+```
+cd my_project/path/to/submodule
+git pull
+### you can operate on the submodule as a normal repository, pull, push, branch, edit...
+### then you need to commit these changes on the main repository
+cd ../../back/to/myproject
+git commit -m"[comment]"
+```
