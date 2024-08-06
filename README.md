@@ -29,6 +29,13 @@ Set an email address that will be associated with each history marker.
 `git config --global color.ui auto`  
 Set automatic command line coloring for Git for easy reviewing.
 
+### Save credentials (unsafe)
+```bash
+cd path/to/one/of/your/repos
+git config --global credential.helper store
+git pull
+# write credentials once forever
+```
 
 ## INIT new repo from scratch
 
